@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 
-const API_KEY = "7d229ca04fa6f47f9241e1865a6ab0be"
+const API_KEY = process.env.API_KEY
 
 export default function Search(){
 
@@ -18,7 +18,7 @@ export default function Search(){
     if (searchTerm) {
       setLoading(true)
       getMovies(
-        `https://api.themoviedb.org/3/search/movie?&api_key=${API_KEY}&language=ko&page=1®ion=KR&query=${searchTerm}`
+        `https://api.themoviedb.org/3/search/movie?&api_key=${API_KEY}&language=ko&®ion=KR&query=${searchTerm}`
       );
       setSearchTerm("");
     }
