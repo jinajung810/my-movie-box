@@ -290,10 +290,15 @@ body {
   color: var(--color-primary);
   margin-bottom: 20px;
 }
+.the-movie .tagline {
+  font-size: 18px;
+  font-style: italic;
+}
 .the-movie .plot {
   width: 100%;
   line-height: 1.4;
   word-break: keep-all;
+  margin-top: 40px;
 }
 .movie-detail .btn-save {
   width: 200px;
@@ -313,9 +318,11 @@ body {
   .the-movie {
     display: block;
   }
+  .the-movie .specs {
+    margin-top: 20px;
+  }
   .the-movie .title {
     font-size: 50px;
-    margin-top: 50px;
   }
 }
 .skeleton {
@@ -353,4 +360,151 @@ body {
 }
 .the-movie .btn-save.skeleton {
   height: 30px;
+}
+.my-review {
+  margin: auto;
+  margin-top: 50px;
+  padding: 30px;
+  width: calc(100% - 150px);
+  height: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--color-white-10);
+  border-radius: 4px;
+}
+.my-review form {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.my-review .my-review-text-area {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.my-review .my-review-text-area .review-basic {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+.my-review .my-review-text-area .review-basic > div {
+  display: flex;
+  flex-direction: column;
+  margin-right: 15px;
+  justify-content: space-between;
+}
+.my-review .my-review-text-area .review-basic > div:last-child{
+  margin-right: 0;
+}
+.my-review span {
+  color: var(--color-primary);
+  font-size: 16px;
+}
+.my-review input {
+  flex-grow: 1;
+  height: 25px;
+  padding: 0 5px;
+  border-radius: 4px;
+  border: none;
+  font-size: 16px;
+  color: var(--color-white);
+  background-color: var(--color-area);
+  margin-top: 5px;
+}
+.star-value .rate-text {
+  font-size: 16px;
+  margin-right: 10px;
+  display: block;
+}
+.star-value span {
+  font-size: 30px;
+  margin-bottom: 3px;
+}
+.my-review .favorite-line-text, .my-review .memo-text {
+  margin: 5px 0;
+}
+.my-review .favorite-line, .my-review .memo {
+  height: auto;
+  overflow: 'auto';
+  padding: 20px;
+  border-radius: 4px;
+  border: none;
+  font-size: 14px;
+  color: var(--color-white);
+  background-color: var(--color-area);
+}
+.my-review .user-img {
+  width: 300px;
+  height: 400px;
+  border: 1px solid #fff;
+  position: relative;
+  border: 1px solid var(--color-white-10);
+  border-radius: 4px;
+}
+.my-review .user-img .custom-file-input-label {
+  display: inline-block;
+  background-color: transparent;
+  color: var(--color-white);
+  cursor: pointer;
+  position: absolute;
+  top: 6%;
+  right: 6%;
+  line-height: 1.4;
+  z-index: 1;
+}
+.my-review .user-img > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.my-review .user-img div p {
+  font-size: 14px;
+  color: var(--color-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.my-review .user-img img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.my-review .save {
+  margin: auto;
+  padding: 30px 0;
+}
+.my-review .btn-save {
+  justify-content: center;
+}
+@media (max-width:1200px){
+  .my-review form {
+    display: block;
+  }
+  .my-review .user-img{
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 800px) {
+  .my-review .my-review-text-area .review-basic{
+    display: block;
+  }
+  .my-review .my-review-text-area .review-basic > div {
+    width: 30%;
+    margin-right: 0;
+  }
+  .my-review .my-review-text-area .review-basic input {
+    margin-bottom: 10px;
+  }
+  .my-review .favorite-line, .my-review .memo {
+    margin-bottom: 10px;
+  }
 }
