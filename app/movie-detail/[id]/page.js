@@ -2,24 +2,22 @@
 
 import { useEffect, useState } from 'react';
 import { detailApi } from "@/pages/api/movies";
-import { Rating } from '@mui/material'
-import { FiCamera } from 'react-icons/fi'
+import ReviewModal from '@/app/ReviewModal';
 
 export default function MovieDetil() {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isSaving, setIsSaving] = useState(false);
-  const [starValue, setStarValue] = useState(2.5);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [imageUrl, setImageUrl] = useState(null);
+  const [movieId, setMovieId] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     // search.js에서 직접 전달한 movie.id를 사용하여 영화 정보를 가져옵니다.
-    const movieId = window.location.pathname.split('/').pop(); 
+    const movieIdFromPath = window.location.pathname.split('/').pop(); 
+    setMovieId(movieIdFromPath); // movieId 상태 설정
 
     setTimeout(() => {
-    detailApi(movieId)
+    detailApi(movieIdFromPath)
       .then((data) => {
         setMovie(data);
         setLoading(false);
@@ -30,9 +28,6 @@ export default function MovieDetil() {
       });
     }, 1000); 
 
-    setSelectedImage(null);
-    setImageUrl(null);
-
   }, []);
 
   function formatDate(dateString) {
@@ -41,10 +36,6 @@ export default function MovieDetil() {
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
     return `${year}/${month}/${day}`;
-  }
-
-  const handleSaveButtonClick = () => {
-    setIsSaving((prevIsSaving) => !prevIsSaving);
   }
 
   function formatRuntime(runtimeInMinutes) {
@@ -58,20 +49,14 @@ export default function MovieDetil() {
       return `${hours}h ${minutes}m`;
     }
   }
-
-  const handleRatingChange = (event, newValue) => {
-    setStarValue(newValue); // 선택한 별점 값을 상태에 업데이트
-    // 여기서 newValue를 사용하여 데이터베이스에 저장하는 로직을 추가할 수 있습니다.
-    console.log(newValue)
+  
+  const openModal = (e) => {
+    setIsModalOpen(true);
+    document.body.style.overflow = "hidden";
   };
-
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      setSelectedImage(file);
-      const imageUrl = URL.createObjectURL(file);
-      setImageUrl(imageUrl);
-    }
+  const closeModal = (e) => {
+    setIsModalOpen(false);
+    document.body.style.overflow = "unset";
   };
 
   return (
@@ -111,7 +96,7 @@ export default function MovieDetil() {
                 <span>{formatDate(movie.release_date)}</span>
                 &nbsp;・&nbsp;
                 {
-                  movie.genres.map((genre, i) => (
+                  movie.genres.slice(0, 3).map((genre, i) => (
                     <span key={genre.id}>
                       {genre.name}
                       {i !== movie.genres.length - 1 && '/'}
@@ -132,73 +117,14 @@ export default function MovieDetil() {
           <div>
             <button 
               className="btn btn-save"
-              onClick={handleSaveButtonClick}>
+              onClick={openModal}>
               My Review
-            </button> 
+            </button>
+              <ReviewModal 
+                isOpen={isModalOpen}
+                onClose={closeModal}
+                movieId={movieId}/>
           </div>
-          {
-            isSaving && (
-              <div className='my-review'>
-                <form>
-                  <div className='my-review-text-area'>
-                    <div className='review-basic'>
-                      <div>
-                        <span>Date</span>
-                        <input name="date" />
-                      </div>
-                      <div>
-                        <span>Where</span>
-                        <input name="where" />
-                      </div>
-                      <div>
-                        <span>Who</span>
-                        <input name="who" />
-                      </div>
-                    </div>
-                    <div className='star-value'>
-                      <span className='rate-text'>Rate</span>
-                      <Rating 
-                        precision={0.5}
-                        value={starValue}
-                        onChange={handleRatingChange}
-                      />
-                    </div>
-                    <span className='favorite-line-text'>Favorite Line</span>
-                    <textarea name="favorite-line" className='favorite-line' rows="2" />
-                    <span className='memo-text'>My Memo</span>
-                    <textarea name="memo" className='memo' rows="6" />
-                  </div>
-                  <div
-                    style={{ backgroundImage: `url(${imageUrl})` }} 
-                    className='user-img'>
-                    <label htmlFor="fileInput" className='custom-file-input-label'>
-                      <FiCamera size='20'/>
-                    </label>
-                    <div>
-                      <p>
-                        Post your favorite movie scenes
-                      </p>
-                    </div>
-                    <input 
-                      type="file" 
-                      accept="image/*" 
-                      className='img-up' 
-                      id="fileInput" 
-                      onChange={handleFileChange}
-                      style={{ display: "none" }}
-                      />
-                      {
-                        imageUrl && 
-                        <img src={imageUrl} alt="user-image" />
-                      }
-                  </div>
-                  <div className='save'>
-                    <button type="submit" className='btn btn-save'>Save</button>
-                  </div>
-                </form>
-              </div>
-            )
-          }
         </div>
       }
     </div>
