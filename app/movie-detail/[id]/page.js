@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { detailApi } from "@/pages/api/movies";
 import { Rating } from '@mui/material'
-import { FiCamera } from 'react-icons/fi'
 
 export default function MovieDetil() {
   const [movie, setMovie] = useState(null);
@@ -11,15 +10,16 @@ export default function MovieDetil() {
   const [error, setError] = useState(null);
   const [isSaving, setIsSaving] = useState(false);
   const [starValue, setStarValue] = useState(2.5);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [imageUrl, setImageUrl] = useState(null);
+
+  const [movieId, setMovieId] = useState(null);
 
   useEffect(() => {
     // search.js에서 직접 전달한 movie.id를 사용하여 영화 정보를 가져옵니다.
-    const movieId = window.location.pathname.split('/').pop(); 
+    const movieIdFromPath = window.location.pathname.split('/').pop(); 
+    setMovieId(movieIdFromPath); // movieId 상태 설정
 
     setTimeout(() => {
-    detailApi(movieId)
+    detailApi(movieIdFromPath)
       .then((data) => {
         setMovie(data);
         setLoading(false);
@@ -29,9 +29,6 @@ export default function MovieDetil() {
         setLoading(false);
       });
     }, 1000); 
-
-    setSelectedImage(null);
-    setImageUrl(null);
 
   }, []);
 
@@ -65,14 +62,6 @@ export default function MovieDetil() {
     console.log(newValue)
   };
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      setSelectedImage(file);
-      const imageUrl = URL.createObjectURL(file);
-      setImageUrl(imageUrl);
-    }
-  };
 
   return (
     <div>
@@ -139,20 +128,21 @@ export default function MovieDetil() {
           {
             isSaving && (
               <div className='my-review'>
-                <form>
+                <form action="/api/review" method='POST'>
+                <input type="hidden" name="movieId" value={movieId} />
                   <div className='my-review-text-area'>
                     <div className='review-basic'>
                       <div>
                         <span>Date</span>
-                        <input name="date" />
+                        <input name="date" placeholder='YY/MM/DD'/>
                       </div>
                       <div>
                         <span>Where</span>
                         <input name="where" />
                       </div>
                       <div>
-                        <span>Who</span>
-                        <input name="who" />
+                        <span>With</span>
+                        <input name="with" />
                       </div>
                     </div>
                     <div className='star-value'>
@@ -168,29 +158,26 @@ export default function MovieDetil() {
                     <span className='memo-text'>My Memo</span>
                     <textarea name="memo" className='memo' rows="6" />
                   </div>
-                  <div
-                    style={{ backgroundImage: `url(${imageUrl})` }} 
-                    className='user-img'>
-                    <label htmlFor="fileInput" className='custom-file-input-label'>
-                      <FiCamera size='20'/>
-                    </label>
-                    <div>
-                      <p>
-                        Post your favorite movie scenes
-                      </p>
+                  <div className='movie-info'>
+                    <div
+                      style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w780/${movie.poster_path})` }}
+                      className='poster'></div>
+                    <div className='title'>
+                      {movie.title}
                     </div>
-                    <input 
-                      type="file" 
-                      accept="image/*" 
-                      className='img-up' 
-                      id="fileInput" 
-                      onChange={handleFileChange}
-                      style={{ display: "none" }}
-                      />
+                    <div className="labels">
+                      <span>{formatDate(movie.release_date)}</span>
+                      &nbsp;・&nbsp;
                       {
-                        imageUrl && 
-                        <img src={imageUrl} alt="user-image" />
-                      }
+                        movie.genres.map((genre, i) => (
+                          <span key={genre.id}>
+                            {genre.name}
+                            {i !== movie.genres.length - 1 && '/'}
+                          </span>
+                      ))}
+                      &nbsp;・&nbsp;
+                      <span>{formatRuntime(movie.runtime)}</span>
+                    </div>
                   </div>
                   <div className='save'>
                     <button type="submit" className='btn btn-save'>Save</button>
