@@ -2,16 +2,14 @@
 
 import { useEffect, useState } from 'react';
 import { detailApi } from "@/pages/api/movies";
-import { Rating } from '@mui/material'
+import ReviewModal from '@/app/ReviewModal';
 
 export default function MovieDetil() {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isSaving, setIsSaving] = useState(false);
-  const [starValue, setStarValue] = useState(2.5);
-
   const [movieId, setMovieId] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     // search.js에서 직접 전달한 movie.id를 사용하여 영화 정보를 가져옵니다.
@@ -40,10 +38,6 @@ export default function MovieDetil() {
     return `${year}/${month}/${day}`;
   }
 
-  const handleSaveButtonClick = () => {
-    setIsSaving((prevIsSaving) => !prevIsSaving);
-  }
-
   function formatRuntime(runtimeInMinutes) {
     const hours = Math.floor(runtimeInMinutes / 60);
     const minutes = runtimeInMinutes % 60;
@@ -55,13 +49,15 @@ export default function MovieDetil() {
       return `${hours}h ${minutes}m`;
     }
   }
-
-  const handleRatingChange = (event, newValue) => {
-    setStarValue(newValue); // 선택한 별점 값을 상태에 업데이트
-    // 여기서 newValue를 사용하여 데이터베이스에 저장하는 로직을 추가할 수 있습니다.
-    console.log(newValue)
+  
+  const openModal = (e) => {
+    setIsModalOpen(true);
+    document.body.style.overflow = "hidden";
   };
-
+  const closeModal = (e) => {
+    setIsModalOpen(false);
+    document.body.style.overflow = "unset";
+  };
 
   return (
     <div>
@@ -100,7 +96,7 @@ export default function MovieDetil() {
                 <span>{formatDate(movie.release_date)}</span>
                 &nbsp;・&nbsp;
                 {
-                  movie.genres.map((genre, i) => (
+                  movie.genres.slice(0, 3).map((genre, i) => (
                     <span key={genre.id}>
                       {genre.name}
                       {i !== movie.genres.length - 1 && '/'}
@@ -121,71 +117,14 @@ export default function MovieDetil() {
           <div>
             <button 
               className="btn btn-save"
-              onClick={handleSaveButtonClick}>
+              onClick={openModal}>
               My Review
-            </button> 
+            </button>
+              <ReviewModal 
+                isOpen={isModalOpen}
+                onClose={closeModal}
+                movieId={movieId}/>
           </div>
-          {
-            isSaving && (
-              <div className='my-review'>
-                <form action="/api/review" method='POST'>
-                <input type="hidden" name="movieId" value={movieId} />
-                  <div className='my-review-text-area'>
-                    <div className='review-basic'>
-                      <div>
-                        <span>Date</span>
-                        <input name="date" placeholder='YY/MM/DD'/>
-                      </div>
-                      <div>
-                        <span>Where</span>
-                        <input name="where" />
-                      </div>
-                      <div>
-                        <span>With</span>
-                        <input name="with" />
-                      </div>
-                    </div>
-                    <div className='star-value'>
-                      <span className='rate-text'>Rate</span>
-                      <Rating 
-                        precision={0.5}
-                        value={starValue}
-                        onChange={handleRatingChange}
-                      />
-                    </div>
-                    <span className='favorite-line-text'>Favorite Line</span>
-                    <textarea name="favorite-line" className='favorite-line' rows="2" />
-                    <span className='memo-text'>My Memo</span>
-                    <textarea name="memo" className='memo' rows="6" />
-                  </div>
-                  <div className='movie-info'>
-                    <div
-                      style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w780/${movie.poster_path})` }}
-                      className='poster'></div>
-                    <div className='title'>
-                      {movie.title}
-                    </div>
-                    <div className="labels">
-                      <span>{formatDate(movie.release_date)}</span>
-                      &nbsp;・&nbsp;
-                      {
-                        movie.genres.map((genre, i) => (
-                          <span key={genre.id}>
-                            {genre.name}
-                            {i !== movie.genres.length - 1 && '/'}
-                          </span>
-                      ))}
-                      &nbsp;・&nbsp;
-                      <span>{formatRuntime(movie.runtime)}</span>
-                    </div>
-                  </div>
-                  <div className='save'>
-                    <button type="submit" className='btn btn-save'>Save</button>
-                  </div>
-                </form>
-              </div>
-            )
-          }
         </div>
       }
     </div>

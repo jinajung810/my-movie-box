@@ -1,5 +1,6 @@
 @import url("https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css");
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
 
 html {
   --color-black: #0E111B;
@@ -62,6 +63,7 @@ body {
 }
 .logo {
   font-family: "Oswald", sans-serif;
+  font-family: "Nanum Gothic";
   font-size: 20px;
   color: var(--color-white);
 }
@@ -257,7 +259,7 @@ body {
 }
 /* movie-detail */
 .movie-detail{
-  margin-top: 50px;
+  margin-top: 20px;
   text-align: center;
 }
 .the-movie {
@@ -280,7 +282,7 @@ body {
   flex-grow: 1;
 }
 .the-movie .title {
-  font-size: 70px;
+  font-size: 50px;
   font-family: "Oswald", sans-serif;
   line-height: 1;
   color:var(--color-white);
@@ -361,49 +363,60 @@ body {
 .the-movie .btn-save.skeleton {
   height: 30px;
 }
-.my-review {
-  margin: auto;
-  margin-top: 50px;
-  padding: 30px;
-  width: calc(100% - 180px);
+/* modal */
+.modal {
+  position: fixed;
+	top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-review {
+  padding: 30px;
+  width: calc(100% - 480px);
+  max-width: 1000px;
   box-sizing: border-box;
   border: 1px solid var(--color-white-10);
   border-radius: 10px;
+  background-color: var(--color-black)
 }
-.my-review form {
+.modal-review form {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
-.my-review .my-review-text-area {
+.modal-review .my-review-text-area {
   text-align: left;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 600px;
 }
-.my-review .my-review-text-area .review-basic {
+.modal-review .my-review-text-area .review-basic {
   width: 600px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 20px;
 }
-.my-review .my-review-text-area .review-basic > div {
+.modal-review .my-review-text-area .review-basic > div {
   display: flex;
   flex-direction: column;
   margin-right: 15px;
   justify-content: space-between;
 }
-.my-review .my-review-text-area .review-basic > div:last-child{
+.modal-review .my-review-text-area .review-basic > div:last-child{
   margin-right: 0;
 }
-.my-review span {
+.modal-review span {
   color: var(--color-primary);
   font-size: 16px;
 }
-.my-review input {
+.modal-review input {
   flex-grow: 1;
   height: 25px;
   padding: 0 5px;
@@ -414,19 +427,19 @@ body {
   background-color: var(--color-area);
   margin-top: 5px;
 }
-.star-value .rate-text {
+.modal-review .star-value .rate-text {
   font-size: 16px;
   margin-right: 10px;
   display: block;
 }
-.star-value span {
+.modal-review .star-value span {
   font-size: 30px;
   margin-bottom: 3px;
 }
-.my-review .favorite-line-text, .my-review .memo-text {
+.modal-review .favorite-line-text, .modal-review .memo-text {
   margin: 5px 0;
 }
-.my-review .favorite-line, .my-review .memo {
+.modal-review .favorite-line, .modal-review .memo {
   height: auto;
   overflow: 'auto';
   padding: 20px;
@@ -436,12 +449,12 @@ body {
   color: var(--color-white);
   background-color: var(--color-area);
 }
-.my-review .movie-info {
+.modal-review .movie-info {
   width: 240px;
   height: 400px;
   position: relative;
 }
-.my-review .poster {
+.modal-review .poster {
   flex-shrink: 0;
   --width: 240px;
   width: var(--width);
@@ -450,42 +463,51 @@ body {
   background-size: cover;
   margin: 0px auto;
 }
-.my-review .title {
+.modal-review .title {
   margin-bottom: 20px;
   margin: 5px;
 }
-.my-review .labels span {
+.modal-review .labels span {
   font-size: 14px;
+  word-break: keep-all;
 }
-
-.my-review .save {
+.modal-review .save-btn {
   margin: auto;
   padding-top: 20px;
 }
-.my-review .btn-save {
+.modal-review .btn-save {
   justify-content: center;
 }
+.modal-review .btn-back {
+  justify-content: center;
+  width: 200px;
+  margin-right: 20px;
+}
+
 @media (max-width:1200px){
-  .my-review form {
+  .modal-review form {
     display: block;
   }
-  .my-review .user-img{
-    margin-top: 30px;
+  .modal-review .movie-info {
+    display: none;
   }
 }
 
 @media (max-width: 800px) {
-  .my-review .my-review-text-area .review-basic{
-    display: block;
+  .modal-review {
+    width: 85%;
   }
-  .my-review .my-review-text-area .review-basic > div {
+  .modal-review .my-review-text-area .review-basic{
+    display: flex;
+  }
+  .modal-review .my-review-text-area .review-basic > div {
     width: 30%;
     margin-right: 0;
   }
-  .my-review .my-review-text-area .review-basic input {
+  .modal-review .my-review-text-area .review-basic input {
     margin-bottom: 10px;
   }
-  .my-review .favorite-line, .my-review .memo {
+  .modal-review .favorite-line, .modal-review .memo {
     margin-bottom: 10px;
   }
 }
