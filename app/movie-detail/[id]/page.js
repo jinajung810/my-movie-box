@@ -5,6 +5,7 @@ import { detailApi } from "@/pages/api/movies";
 import ReviewModal from '@/app/ReviewModal';
 
 export default function MovieDetil() {
+
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

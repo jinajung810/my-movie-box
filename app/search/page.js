@@ -11,7 +11,6 @@ export default function Search() {
   const [loading, setLoading] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
-  console.log(selectedMovie);
   const handleMovieClick = (movie) => {
     setSelectedMovie(movie);
   };

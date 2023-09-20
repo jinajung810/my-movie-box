@@ -17,7 +17,7 @@ export async function middleware(request) {
   // /main에서 로그아웃 하면 다시 로그인 페이지('/')로 이동 
   if (request.nextUrl.pathname.startsWith('/main')) {
     const session = await getToken({ req : request })
-    console.log('세션', session)
+    // console.log('세션', session)
     if (session == null) {
       return NextResponse.redirect(new URL('/', request.url));
     }
