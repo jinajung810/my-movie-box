@@ -14,7 +14,6 @@ const ReviewModal = ({ isOpen, onClose,  movieId }) => {
     detailApi(movieId)
       .then((data) => {
         setMovie(data);
-        console.log('성공?', data)
       })
       .catch((error) => {
         setError(error);
@@ -80,10 +79,11 @@ const ReviewModal = ({ isOpen, onClose,  movieId }) => {
               precision={0.5}
               value={starValue}
               onChange={handleRatingChange}
+              name='star'
             />
           </div>
           <span className='favorite-line-text'>Favorite Line</span>
-          <textarea name="favorite-line" className='favorite-line' rows="2" />
+          <textarea name="favoriteLine" className='favorite-line' rows="2" />
           <span className='memo-text'>My Memo</span>
           <textarea name="memo" className='memo' rows="6" />
         </div>
