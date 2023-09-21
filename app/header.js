@@ -10,8 +10,11 @@ export default async function Header(){
 
   return (
   <div className="nav-bar"> 
-    <Link href="/search" className="logo">
+    <Link href="/main" className="logo">
       {session.user.name}'s <span>MOVIE</span> BOX
+    </Link>
+    <Link href="/search" className='searcg-menu'>
+      Search
     </Link>
     <SignOutBtn />
   </div>
