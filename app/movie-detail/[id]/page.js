@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { detailApi } from "@/pages/api/movies";
-import ReviewModal from '@/app/ReviewModal';
+import NewReviewModal from '@/app/NewReviewModal';
 
 export default function MovieDetil() {
 
@@ -121,7 +121,7 @@ export default function MovieDetil() {
               onClick={openModal}>
               My Review
             </button>
-              <ReviewModal 
+              <NewReviewModal 
                 isOpen={isModalOpen}
                 onClose={closeModal}
                 movieId={movieId}/>

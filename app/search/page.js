@@ -26,7 +26,6 @@ export default function Search() {
       searchApi(searchTerm)
         .then((results) => {
           setMovies(results);
-          console.log(results);
         })
         .catch((error) => {
           console.error("Error fetching movies:", error);
