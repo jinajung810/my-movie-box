@@ -1,15 +1,12 @@
 import { connectDB } from "@/util/database"
 import { authOptions } from "@/pages/api/auth/[...nextauth].js"
 import { getServerSession } from "next-auth/next"
-
-import Header from "../header"
-import SearchPageMove from "../searchPageMove"
 import ReviewList from "../review-list"
 
 export default async function main(){
   let session = await getServerSession(authOptions)
-  let user = session.user.email
-
+  let user = session ? session.user.email : 'my'
+  
   const db = (await connectDB).db("my-movie-box")
   let reviews = await db.collection('reviews').find().toArray()
   const userReaview = reviews.filter((review) => review.author === user)
@@ -30,18 +27,8 @@ export default async function main(){
 
   return (
     <div className="container">
-      <Header />
-      <SearchPageMove />
       <div className="my-list">
-        {
-          userReaview.length === 0 ? (
-            <h2 className="empty-message">
-              Fill out your own <span>movie</span> box.
-            </h2>
-          ) : (
-            <ReviewList reviews={JSON.stringify(userReviews)}/>
-          )
-        }
+        <ReviewList reviews={JSON.stringify(userReviews)}/>
       </div>
     </div>
   )
