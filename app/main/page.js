@@ -1,3 +1,4 @@
+
 import { connectDB } from "@/util/database"
 import { authOptions } from "@/pages/api/auth/[...nextauth].js"
 import { getServerSession } from "next-auth/next"
@@ -12,6 +13,7 @@ export default async function main(){
   const db = (await connectDB).db("my-movie-box")
   let reviews = await db.collection('reviews').find().toArray()
   const userReaview = reviews.filter((review) => review.author === user)
+
   
   const userReviews = userReaview.map(review => {
     return {
@@ -35,9 +37,11 @@ export default async function main(){
         </Link>
         <SignOutBtn />
       </div>
+
       <div className="my-list">
         <ReviewList reviews={JSON.stringify(userReviews)}/>
       </div>
+      
       <div className='footer'>
         <Link href='https://github.com/jinajung810/my-movie-box' target="_blank">
           GitHuv Repository
