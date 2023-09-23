@@ -1,9 +1,8 @@
 import { connectDB } from "@/util/database"
 import { authOptions } from "@/pages/api/auth/[...nextauth].js"
 import { getServerSession } from "next-auth/next"
-
-import Header from "../header"
-import SearchPageMove from "../searchPageMove"
+import Link from "next/link"
+import { SignOutBtn } from "../signOut"
 import ReviewList from "../review-list"
 
 export default async function main(){
@@ -30,18 +29,23 @@ export default async function main(){
 
   return (
     <div className="container">
-      <Header />
-      <SearchPageMove />
+      <div className="nav-bar"> 
+        <Link href="/main" className="logo">
+          {session.user.name}'s <span>MOVIE</span> BOX
+        </Link>
+        <SignOutBtn />
+      </div>
       <div className="my-list">
-        {
-          userReaview.length === 0 ? (
-            <h2 className="empty-message">
-              Fill out your own <span>movie</span> box.
-            </h2>
-          ) : (
-            <ReviewList reviews={JSON.stringify(userReviews)}/>
-          )
-        }
+        <ReviewList reviews={JSON.stringify(userReviews)}/>
+      </div>
+      <div className='footer'>
+        <Link href='https://github.com/jinajung810/my-movie-box' target="_blank">
+          GitHuv Repository
+        </Link>
+        &nbsp;・&nbsp;
+        <Link href='https://mail.google.com/mail/?view=cm&fs=1&to=${email}' target="_blank">Contact Me!</Link>
+        <span>{new Date().getFullYear()}</span>
+        <span>Jina Jung</span>
       </div>
     </div>
   )

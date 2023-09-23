@@ -10,7 +10,7 @@ html {
   --color-white-20: rgba(255,255,255,.2);
   --color-white-10: rgba(255,255,255,.1);
   --color-white-5: rgba(255,255,255,.05);
-  --color-primary: #FF6535;
+  --color-primary: #625AD8;
   --color-area: #1C212E;
 }
 body { 
@@ -47,7 +47,7 @@ body {
   color: var(--color-white);
   cursor: pointer;
 }
-.link {
+.link, a {
   text-decoration: none;
 }
 /* header */
@@ -84,6 +84,27 @@ body {
 }
 .nav-sign-out:hover {
   text-decoration: underline;
+}
+/* footer */
+.footer {
+  font-family: "Oswald", sans-serif;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  text-align: center;
+  color: var(--color-white-30); 
+}
+.footer a { 
+  color: var(--color-white-20);
+  margin-bottom: 5px;
+  width: fit-content;
+  margin: 0 3px;
+}
+.footer a:hover { 
+  text-decoration: underline;
+}
+.footer span {
+  margin-left: 5px;
 }
 /* login page */
 .login-page {
@@ -148,46 +169,44 @@ body {
   color: red;
 }
 /* main page */
-.search {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 30px;
-}
-.search input {
-  flex-grow: 1;
-  height: 50px;
-  padding: 0 20px;
-  border-radius: 4px;
-  border: none;
-  font-size: 14px;
-  color: var(--color-white);
-  background-color: var(--color-area);
-}
-.search input::placeholder {
-  color: var(--color-white-30);
-}
-.search .btn {
-  flex-grow: 1;
-  max-width: 150px;
-}
 .my-list {
   padding: 20px;
   border-radius: 4px;
   background-color: var(--color-area);
 }
-.my-list .empty-message {
-  color: var(--color-white);
-  font-size: 14px;
-  text-align: center;
-}
-.my-list .empty-message span {
-  color: var(--color-primary);
-}
 .my-list .reviews {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 20px;
+}
+.my-list .reviews .add-review {
+  --width: 200px;
+  width: var(--width);
+  height: calc(var(--width)*3 / 2);
+  border: 1px dashed var(--color-white-50);
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+.my-list .reviews .add-review:hover::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: -1px;
+  right: -1px;
+  border: 6px solid var(--color-primary);
+}
+.my-list .reviews .add-message {
+  padding-top: 5px;
+  font-size: 14px;
+}
+.my-list .reviews .add-message span {
+  color: var(--color-primary);
 }
 .my-list .reviews .review {
   --width: 200px;
@@ -230,6 +249,28 @@ body {
   left:0;
 }
 /* search-page */
+.search {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+.search input {
+  flex-grow: 1;
+  height: 50px;
+  padding: 0 20px;
+  border-radius: 4px;
+  border: none;
+  font-size: 14px;
+  color: var(--color-white);
+  background-color: var(--color-area);
+}
+.search input::placeholder {
+  color: var(--color-white-30);
+}
+.search .btn {
+  flex-grow: 1;
+  max-width: 150px;
+}
 .search-list {
   padding: 20px;
   border-radius: 4px;
