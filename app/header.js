@@ -13,9 +13,6 @@ export default async function Header(){
     <Link href="/main" className="logo">
       {session.user.name}'s <span>MOVIE</span> BOX
     </Link>
-    <Link href="/search" className='searcg-menu'>
-      Search
-    </Link>
     <SignOutBtn />
   </div>
   )

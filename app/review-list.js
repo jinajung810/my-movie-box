@@ -4,6 +4,8 @@ import { detailApi } from "@/pages/api/movies"
 import { useEffect, useState } from "react"
 import { Rating } from '@mui/material';
 import MyReviewModal from "./MyReviewModal";
+import Link from "next/link";
+import {TbCubePlus } from 'react-icons/tb'
 
 export default function ReviewList({reviews}){
   const parsedReviews = JSON.parse(reviews);
@@ -51,6 +53,14 @@ export default function ReviewList({reviews}){
   
   return (
     <div className="reviews">
+      <Link href="/search">
+        <div className="add-review">
+          <TbCubePlus size='40'/>
+          <h2 className="add-message">
+            Fill out <br />your own <span> movie</span> box.
+          </h2>
+        </div>
+      </Link>
       {
         parsedReviews.map((review, index) => (
           <div 
