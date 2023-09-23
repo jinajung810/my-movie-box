@@ -1,11 +1,5 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import Link from 'next/link'
-import { SignOutBtn } from './signOut'
-
-import { authOptions } from "@/pages/api/auth/[...nextauth].js"
-import { getServerSession } from "next-auth/next"
-
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,33 +9,11 @@ export const metadata = {
 }
 
 export default async function RootLayout({ children }) {
-  let session = await getServerSession(authOptions)
-  const userName = session ? session.user.name : "My";
   
   return (
     <html lang="en">
       <body className={inter.className} >  
-        <div className="header"> 
-          <div className='nav'>
-            <Link href="/main" className="logo">
-              <span>{userName}</span>'s MOVIE BOX
-            </Link>
-            <Link href="/search">
-              <h2>Search</h2>
-            </Link>
-          </div>
-          <SignOutBtn />
-        </div>
         {children}
-        <div className='footer'>
-          <Link href='https://github.com/jinajung810/my-movie-box' target="_blank">
-            GitHuv Repository
-          </Link>
-          &nbsp;・&nbsp;
-          <Link href='https://mail.google.com/mail/?view=cm&fs=1&to=${email}' target="_blank">Contact Me!</Link>
-          <span>{new Date().getFullYear()}</span>
-          <span>Jina Jung</span>
-        </div>
       </body>
     </html>
   )
