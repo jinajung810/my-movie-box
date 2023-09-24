@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { detailApi } from "@/pages/api/movies";
 import { Rating } from '@mui/material';
+import {AiOutlineClose} from 'react-icons/ai'
 
 const MyReviewModal = ({ isOpen, onClose, review }) => {
   if (!isOpen) return null;
@@ -100,140 +101,136 @@ const MyReviewModal = ({ isOpen, onClose, review }) => {
     }
   };
   
-  
   return (
     <div className="my-modal" onClick={handleModalClick}>
-      <div className="my-review" ref={modalRef}>
-        <form>
-          {
-            error && 
-            <p>오류가 발생했습니다: {error.message}</p>
-          } 
-          {
-            movie && 
-            <div className='movie-info'>
-              <div
-                style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w780/${movie.poster_path})` }}
-                className='poster'></div>
-              <div className='title'>
-                {movie.title}
-              </div>
-            </div>
-          }
-          <div className='my-review-text-area'>
-            <div className='review-basic'>
-              <div>
-                <span>Date</span>
-                {isEditing ? (
-                  <input 
-                    name="date" 
-                    placeholder='YY/MM/DD' 
-                    onChange={(e) => setEditReview({ ...editReview, date: e.target.value })} />
-                ) : (
-                  <input 
-                    name="date" 
-                    defaultValue={review.date} 
-                    disabled />
-                )}
-              </div>
-              <div>
-                <span>Where</span>
-                {isEditing ? (
-                  <input 
-                    name="where" 
-                    onChange={(e) => setEditReview({ ...editReview, where: e.target.value })} />
-                ) : (
-                  <input 
-                    name="where" 
-                    defaultValue={review.where} disabled />
-                )}
-              </div>
-              <div>
-                <span>With</span>
-                {isEditing ? (
-                  <input 
-                  name="with" 
-                  onChange={(e) => setEditReview({ ...editReview, with: e.target.value })} />
-                ) : (
-                  <input 
-                    name="with" 
-                    defaultValue={review.with} 
-                    disabled />
-                )}
-              </div>
-            </div>
-            <div className='star-value'>
-              <span className='rate-text'>Rate</span>
-              <Rating 
-                defaultValue={parseFloat(review.star)} 
-                className="star"
-                readOnly={!isEditing}
-                onChange={(event, newValue) => {
-                  setEditReview({ ...editReview, star: newValue }); }}
-                name="star"/>
-            </div>
-            <span className='favorite-line-text'>Favorite Line</span>
+      <form className="my-review-box" ref={modalRef}>
+      <input type="hidden" name="id" value={review._id} />
+      {
+        error && 
+        <p>오류가 발생했습니다: {error.message}</p>
+      } 
+      {
+        movie && 
+        <div className='movie-info'>
+          <div
+            style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w780/${movie.poster_path})` }}
+            className='poster'></div>
+        </div>
+      }
+      <div className='my-review'>
+        <button onClick={onClose} className='close'>
+          <AiOutlineClose />
+        </button>
+        <Rating 
+          defaultValue={parseFloat(review.star)} 
+          className="star"
+          readOnly={!isEditing}
+          onChange={(event, newValue) => {
+            setEditReview({ ...editReview, star: newValue }); }}
+          name="star"/>
+        <div className='review-text'>
+          <div className="date">
+            <span>Date</span>
             {isEditing ? (
-              <textarea 
-                name="favoriteLine" 
-                className='favorite-line' 
-                rows="2" 
-                onChange={(e) => setEditReview({ ...editReview, favoriteLine: e.target.value })} />
+              <input 
+                name="date" 
+                placeholder='YY/MM/DD' 
+                onChange={(e) => setEditReview({ ...editReview, date: e.target.value })} />
             ) : (
-              <textarea 
-                name="favoriteLine" 
-                className='favorite-line' 
-                rows="2" 
-                defaultValue={review.favoriteLine} 
-                disabled />
-            )}
-            <span className='memo-text'>My Memo</span>
-            {isEditing ? (
-              <textarea 
-                name="memo" 
-                className='memo' 
-                rows="6" 
-                onChange={(e) => setEditReview({ ...editReview, memo: e.target.value })} />
-            ) : (
-              <textarea 
-                name="memo" 
-                className='memo' 
-                rows="6" 
-                defaultValue={review.memo} 
+              <input 
+                name="date" 
+                defaultValue={review.date} 
                 disabled />
             )}
           </div>
-          <div className='save-btn'>
+          <div className="where">
+            <span>Where</span>
             {isEditing ? (
-              <div>
-                <button 
-                  type="button" 
-                  onClick={handleUpdateClick}
-                  className='btn btn-edit'>
-                    Save</button>
-                <button 
-                  type="button" 
-                  onClick={handleCancelEditClick} className='btn btn-back'>
-                    Cancel</button>
-              </div>
+              <input 
+                name="where" 
+                onChange={(e) => setEditReview({ ...editReview, where: e.target.value })} />
             ) : (
-              <div>
-                <button 
-                  type="button" 
-                  onClick={handleEditClick} 
-                  className='btn btn-edit'>
-                    Edit</button>
-                <button 
-                  type="button" 
-                  onClick={handleDeleteClick} 
-                  className='btn btn-back'>
-                    Delete</button>
-              </div>
+              <input 
+                name="where" 
+                defaultValue={review.where} disabled />
             )}
           </div>
-          <input type="hidden" name="id" value={review._id} />
-        </form>
+          <div className="with">
+            <span>With</span>
+            {isEditing ? (
+              <input 
+              name="with" 
+              onChange={(e) => setEditReview({ ...editReview, with: e.target.value })} />
+            ) : (
+              <input 
+                name="with" 
+                defaultValue={review.with} 
+                disabled />
+            )}
+          </div>
+        </div>
+        <div className='favorite-line'>
+          <span>Favorite Line</span>
+          {isEditing ? (
+            <textarea 
+              name="favoriteLine" 
+              className='favorite-line' 
+              rows="2" 
+              onChange={(e) => setEditReview({ ...editReview, favoriteLine: e.target.value })} />
+          ) : (
+            <textarea 
+              name="favoriteLine" 
+              className='favorite-line' 
+              rows="2" 
+              defaultValue={review.favoriteLine} 
+              disabled />
+          )}
+        </div>
+        <div className='memo'>
+          <span>My Memo</span>
+          {isEditing ? (
+            <textarea 
+              name="memo" 
+              className='memo' 
+              rows="6" 
+              onChange={(e) => setEditReview({ ...editReview, memo: e.target.value })} />
+          ) : (
+            <textarea 
+              name="memo" 
+              className='memo' 
+              rows="6" 
+              defaultValue={review.memo} 
+              disabled />
+          )}
+        </div>
+        {isEditing ? (
+          <div>
+            <button 
+              type="button" 
+              onClick={handleUpdateClick}
+              className="review-btn">
+                Save</button>
+            <button 
+              type="button" 
+              onClick={handleCancelEditClick} className='review-btn'>
+                Cancel</button>
+          </div>
+        ) : (
+          <div className="review-btns">
+            <button 
+              type="button" 
+              onClick={handleEditClick} 
+              className='review-btn'>
+                Edit</button>
+            <button 
+              type="button" 
+              onClick={handleDeleteClick} 
+              className='review-btn'>
+                Delete</button>
+          </div>
+        )}
       </div>
+      </form>
     </div>
   );
 }

@@ -119,7 +119,7 @@ export default function MovieDetil() {
             <button 
               className="btn btn-save"
               onClick={openModal}>
-              My Review
+              Record my review
             </button>
               <NewReviewModal 
                 isOpen={isModalOpen}

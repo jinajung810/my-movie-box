@@ -9,6 +9,7 @@ import {TbCubePlus } from 'react-icons/tb'
 
 export default function ReviewList({reviews}){
   const parsedReviews = JSON.parse(reviews);
+  
   const [moviePosters, setMoviePosters] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(parsedReviews.map(() => false));
   const [selectedReview, setSelectedReview] = useState(null);
@@ -33,7 +34,7 @@ export default function ReviewList({reviews}){
       setMoviePosters(posters)
     }
     fetchMovie();
-  },[parsedReviews])
+  },[])
 
   const openModal = (index) => {
     setSelectedReview(index);

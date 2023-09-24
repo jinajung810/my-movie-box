@@ -1,24 +1,11 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react';
-import { detailApi } from "@/pages/api/movies";
+import { useState, useRef } from 'react';
 import { Rating } from '@mui/material';
+import { AiOutlineClose } from 'react-icons/ai'
 
 export default function NewReviewModal ({ isOpen, onClose,  movieId })  {
   const [starValue, setStarValue] = useState(2.5);
-  const [movie, setMovie] = useState(null);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    // movieId를 이용해 영화 정보를 가져옵니다.
-    detailApi(movieId)
-      .then((data) => {
-        setMovie(data);
-      })
-      .catch((error) => {
-        setError(error);
-      });
-  }, [movieId]);
 
   const modalRef = useRef(null);
   const handleModalClick = (e) => {
@@ -34,60 +21,43 @@ export default function NewReviewModal ({ isOpen, onClose,  movieId })  {
   };
 
   return (
-    <div className="new-modal" onClick={handleModalClick}>
-      <div className='new-review' ref={modalRef}>
-        <form action="/api/new" method='POST'>
-          {
-            error && 
-            <p>오류가 발생했습니다: {error.message}</p>
-          } 
-          {
-            movie && 
-            <div className='movie-info'>
-              <div
-                style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w780/${movie.poster_path})` }}
-                className='poster'></div>
-              <div className='title'>
-                {movie.title}
-              </div>
-            </div>
-          }
+    <div className="new-modal" onClick={handleModalClick} >
+        <form action="/api/new" method='POST' className='new-review' ref={modalRef}>
           <input type="hidden" name="movieId" value={movieId} />
-          <div className='my-review-text-area'>
-            <div className='review-basic'>
-              <div>
-                <span>Date</span>
-                <input name="date" placeholder='YY/MM/DD'/>
-              </div>
-              <div>
-                <span>Where</span>
-                <input name="where" />
-              </div>
-              <div>
-                <span>With</span>
-                <input name="with" />
-              </div>
+          <button onClick={onClose} className='close'>
+            <AiOutlineClose />
+          </button>
+          <Rating 
+            className='star'
+            precision={0.5}
+            value={starValue}
+            onChange={handleRatingChange}
+            name='star'
+          />
+          <div className='review-text'>
+            <div className='date'>
+              <span>Date</span>
+              <input name="date" placeholder='YY/MM/DD'/>
             </div>
-            <div className='star-value'>
-              <span className='rate-text'>Rate</span>
-              <Rating 
-                precision={0.5}
-                value={starValue}
-                onChange={handleRatingChange}
-                name='star'
-              />
+            <div className='where'>
+              <span>Where</span>
+              <input name="where" />
             </div>
-            <span className='favorite-line-text'>Favorite Line</span>
-            <textarea name="favoriteLine" className='favorite-line' rows="2" />
-            <span className='memo-text'>My Memo</span>
-            <textarea name="memo" className='memo' rows="6" />
+            <div className='with'>
+              <span>With</span>
+              <input name="with" />
+            </div>
           </div>
-          <div className='save-btn'>
-            <button type="submit" className='btn btn-save'>Save</button>
-            <button onClick={onClose} className='btn btn-back'>Back</button>
+          <div className='favorite-line'>
+            <span>Favorite Line</span>
+            <textarea name="favoriteLine" rows="2" />
           </div>
+          <div className='memo'>
+            <span>My Memo</span>
+            <textarea name="memo" rows="6" />
+          </div>
+          <button type="submit" className='btn-save'>Save</button>
         </form>
-      </div>
     </div>
   );
 };
