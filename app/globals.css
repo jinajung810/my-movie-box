@@ -227,6 +227,28 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  position: relative;
+}
+.my-list .reviews .star-list {
+  position: absolute;
+  top: -50px;
+  right: -20px;
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+}
+.my-list .reviews .star-list .filter-label {
+  font-size: 14px;
+  margin-right: 10px;
+}
+.my-list .reviews .star-list .show-all-button {
+  margin-left: 5px;
+  background-color: var(--color-primary);
+  border: none;
+  color: var(--color-white);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
 }
 .my-list .reviews .add-review {
   --width: 200px;
