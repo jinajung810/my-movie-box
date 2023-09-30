@@ -123,6 +123,7 @@ const MyReviewModal = ({ isOpen, onClose, review }) => {
         </button>
         <Rating 
           defaultValue={parseFloat(review.star)} 
+          precision={0.5}
           className="star"
           readOnly={!isEditing}
           onChange={(event, newValue) => {
@@ -208,19 +209,15 @@ const MyReviewModal = ({ isOpen, onClose, review }) => {
             <button 
               type="button" 
               onClick={handleUpdateClick}
-              className="review-btn">
+              className="review-btn save">
                 Save</button>
-            <button 
-              type="button" 
-              onClick={handleCancelEditClick} className='review-btn'>
-                Cancel</button>
           </div>
         ) : (
           <div className="review-btns">
             <button 
               type="button" 
               onClick={handleEditClick} 
-              className='review-btn'>
+              className='review-btn edit'>
                 Edit</button>
             <button 
               type="button" 
