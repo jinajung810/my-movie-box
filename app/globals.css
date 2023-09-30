@@ -202,10 +202,12 @@ body {
   border: 6px solid var(--color-primary);
 }
 .my-list .reviews .add-message {
+  font-family: "Oswald", sans-serif;
   padding-top: 5px;
   font-size: 14px;
 }
 .my-list .reviews .add-message span {
+  font-size: 17px;
   color: var(--color-primary);
 }
 .my-list .reviews .review {
@@ -496,6 +498,7 @@ body {
   text-align: center;
   font-family: "Nanum Gothic", sans-serif;
   width: 90%;
+  color: var(--color-white);
 }
 .new-review .review-text input::placeholder {
   color: var(--color-white-30);
@@ -514,7 +517,7 @@ body {
   border: 1px solid #000;
   border-radius: 4px;
   font-family: "Nanum Gothic", sans-serif;
-  color: var(--color-area)
+  color: var(--color-white)
 }
 .new-review .btn-save {
   border: 1px solid #fff;
@@ -524,6 +527,11 @@ body {
   height: 50px;
   margin-top: 10px;
   color: var(--color-white);
+  font-weight: 700;
+}
+.new-review .btn-save:hover {
+  background-color: var(--color-white);
+  color: var(--color-primary)
 }
 
 /* my review modal */
@@ -596,7 +604,7 @@ body {
   text-align: center;
   font-family: "Nanum Gothic", sans-serif;
   width: 90%;
-  color: var(--color-area);
+  color: var(--color-white);
 }
 .my-review .review-text input::placeholder {
   color: var(--color-white-30);
@@ -615,7 +623,7 @@ body {
   border: 1px solid #000;
   border-radius: 4px;
   font-family: "Nanum Gothic", sans-serif;
-  color: var(--color-area);
+  color: var(--color-white);
 }
 .my-review .review-btns {
   text-align: center;
@@ -630,6 +638,11 @@ body {
   margin: 0 5px;
   margin-top: 10px;
   color: var(--color-white);
+  font-weight: 700;
+}
+.my-review .review-btn:hover {
+  background-color:var(--color-white);
+  color: var(--color-primary)
 }
 @media (max-width: 800px) {
   .my-review-box {
