@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from "react"
-import { BiSolidColorFill } from 'react-icons/bi'
+import { IoIosColorPalette } from 'react-icons/io'
 
 export default function Theme (){
   const savedTheme = localStorage.getItem("selectedTheme");
@@ -31,7 +31,7 @@ export default function Theme (){
       <button 
         className="btn-theme"
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-        <BiSolidColorFill size='20'/>
+        <IoIosColorPalette size='18'/>
       </button>
       {
         isDropdownOpen && (
