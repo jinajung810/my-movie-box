@@ -1,7 +1,7 @@
 'use client'
 
 import SignInBtn from "./signInBtn";
-import SignUpBtn from "./signUpBtn";
+
 
 export default function Home() {
 
@@ -15,7 +15,7 @@ export default function Home() {
         </h1>
       </div>
       <SignInBtn />
-      <SignUpBtn />
+
     </div>
   )
 }
