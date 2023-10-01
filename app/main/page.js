@@ -36,12 +36,12 @@ export default async function main(){
         <div className="logo">
           {
             session.user? (
-              `${session.user.name}'s <span>MOVIE</span> BOX`
+              `${session.user.name}'s`
             ) : (
-              `Your <span>MOVIE</span> BOX`
+              Your 
             )
           }
-          
+          <span>MOVIE</span> BOX
         </div>
         <div>
           <SignOutBtn />
