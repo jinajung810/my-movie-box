@@ -26,7 +26,6 @@ export default async function handler(req, res) {
       {_id : new ObjectId(updateValue._id)}, 
       { $set: updateReview } 
     );
-    console.log(result)
 
     res.end()
   }

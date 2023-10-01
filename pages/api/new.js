@@ -4,7 +4,14 @@ import { getServerSession } from "next-auth/next"
 
 export default async function handler(req, res) {
   if (req.method == 'POST') {
-    
+
+    const { date } = req.body;
+    const datePattern = /^\d{2}\/\d{2}\/\d{2}$/;
+
+    if (!datePattern.test(date)) {
+      return res.status(400).json('날짜 형식을 YY/MM/DD로 작성해주세요')
+    }
+
     let session = await getServerSession(req, res, authOptions)
 
     let collection = {

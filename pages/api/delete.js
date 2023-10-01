@@ -8,7 +8,6 @@ export default async function handler(req, res) {
     const db = ( await connectDB).db('my-movie-box')
     let result = await db.collection('reviews').deleteOne({_id : new ObjectId(req.body)});
 
-    // res.writeHead(302, { Location: '/main' });
     res.end();
   }
 }

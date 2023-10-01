@@ -1,5 +1,3 @@
-// api.js
-
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = process.env.API_KEY;
 const LANGUAGE = 'ko-KR';
