@@ -16,21 +16,21 @@ export default async function main() {
       <div className="container">
         <div className="nav-bar">
           <div className="logo">
-            Your <span>MOVIE</span> BOX
+            Your <p>MOVIE</p> BOX
           </div>
           <div>
             <SignInBtn />
           </div>
         </div>
         <div className="my-list">
-          <Link href="/search">
-            <div className="add-review">
-              <TbCubePlus size='40'/>
-              <h2 className="add-message">
-                Fill out <br />your own <span> movie</span> box.
-              </h2>
-            </div>
-          </Link>
+          <div className="add-review">
+            <TbCubePlus size='40'/>
+            <h2 className="add-message">
+            It's an empty box.<br /> 
+            <span>After signing in,</span> <br />
+            search for a movie and add it.
+            </h2>
+          </div>
         </div>
         <div className='footer'>
           <Link href='https://github.com/jinajung810/my-movie-box' target="_blank">

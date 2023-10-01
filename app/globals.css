@@ -65,10 +65,11 @@ body {
   font-family: "Oswald", sans-serif;
   font-size: 20px;
   color: var(--color-white);
+  display: flex;
 }
-.logo span {
+.logo p {
   color: var(--color-primary);
-  font-size: 22px;
+  margin: 0 2px;
 }
 .nav-bar .nav-sign-in {
   padding: 0 10px;
