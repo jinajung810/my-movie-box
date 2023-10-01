@@ -10,12 +10,12 @@ import bcrypt from 'bcrypt'
 export const authOptions = {
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID, 
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET
+      clientId: process.env.local.GOOGLE_CLIENT_ID, 
+      clientSecret: process.env.local.GOOGLE_CLIENT_SECRET
       }),
     GithubProvider({
-      clientId:process.env.GITHUB_CLIENT_ID,
-      clientSecret:process.env.GITHUB_CLIENT_SECRET,
+      clientId:process.env.local.GITHUB_CLIENT_ID,
+      clientSecret:process.env.local.GITHUB_CLIENT_SECRET,
     }),
     
 
@@ -72,7 +72,7 @@ export const authOptions = {
         },
       },
   adapter: MongoDBAdapter(connectDB),
-  secret : process.env.JWT_SECRET,
+  secret : process.env.local.JWT_SECRET,
 
 };
 export default NextAuth(authOptions); 
