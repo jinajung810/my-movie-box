@@ -21,9 +21,7 @@ export default async function main() {
             <SignInBtn />
           </div>
         </div>
-        <div className="my-list">
-          <ReviewList reviews={JSON.stringify(userReviews)} />
-        </div>
+
         <div className='footer'>
           <Link href='https://github.com/jinajung810/my-movie-box' target="_blank">
             GitHub Repository
