@@ -69,7 +69,7 @@ body {
 }
 .logo p {
   color: var(--color-primary);
-  margin: 0 2px;
+  margin: 2px 0;
 }
 .nav-bar .nav-sign-in {
   padding: 0 10px;
