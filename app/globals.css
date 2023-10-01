@@ -68,6 +68,7 @@ body {
 }
 .logo span {
   color: var(--color-primary);
+  font-size: 22px;
 }
 .nav-bar .nav-sign-in {
   padding: 0 10px;

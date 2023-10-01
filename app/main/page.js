@@ -3,21 +3,26 @@ import { authOptions } from "@/pages/api/auth/[...nextauth].js";
 import { getServerSession } from "next-auth/next";
 import Link from "next/link";
 import { SignOutBtn } from "../signOut";
+import { SignInBtn } from "../signInBtn"
 import ReviewList from "../review-list";
 
 export default async function main() {
   let session = await getServerSession(authOptions);
-  let user = session ? session.user.email : null; // 사용자가 로그인하지 않았을 때 null로 설정
+  let user = session ? session.user.email : null; 
 
   if (!user) {
-    // 사용자가 로그인하지 않은 경우 로그인 페이지로 리디렉션
-    // 예: router.push('/login') 또는 Link 컴포넌트를 사용하여 로그인 페이지로 이동
     return (
       <div className="container">
         <div className="nav-bar">
           <div className="logo">
             Your <span>MOVIE</span> BOX
           </div>
+          <div>
+            <SignInBtn />
+          </div>
+        </div>
+        <div className="my-list">
+          <ReviewList reviews={JSON.stringify(userReviews)} />
         </div>
         <div className='footer'>
           <Link href='https://github.com/jinajung810/my-movie-box' target="_blank">
