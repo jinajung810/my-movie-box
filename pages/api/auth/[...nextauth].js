@@ -72,7 +72,7 @@ export const authOptions = {
         },
       },
   adapter: MongoDBAdapter(connectDB),
-  secret : 'qlalfqjsgh486',
+  secret : process.env.JWT_SECRET,
 
 };
 export default NextAuth(authOptions); 
