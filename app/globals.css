@@ -273,7 +273,6 @@ body {
 .search-list .empty-message {
   color: var(--color-primary);
   font-size: 14px;
-  text-align: center;
 }
 .search-list .the-loader {
   width: 30px;
