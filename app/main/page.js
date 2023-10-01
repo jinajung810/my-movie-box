@@ -3,8 +3,9 @@ import { authOptions } from "@/pages/api/auth/[...nextauth].js";
 import { getServerSession } from "next-auth/next";
 import Link from "next/link";
 import { SignOutBtn } from "../signOut";
-import { SignInBtn } from "../signInBtn"
+import SignInBtn from "../signInBtn";
 import ReviewList from "../review-list";
+import {TbCubePlus } from 'react-icons/tb'
 
 export default async function main() {
   let session = await getServerSession(authOptions);
@@ -21,7 +22,16 @@ export default async function main() {
             <SignInBtn />
           </div>
         </div>
-
+        <div className="my-list">
+          <Link href="/search">
+            <div className="add-review">
+              <TbCubePlus size='40'/>
+              <h2 className="add-message">
+                Fill out <br />your own <span> movie</span> box.
+              </h2>
+            </div>
+          </Link>
+        </div>
         <div className='footer'>
           <Link href='https://github.com/jinajung810/my-movie-box' target="_blank">
             GitHub Repository
