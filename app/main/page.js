@@ -5,7 +5,7 @@ import { getServerSession } from "next-auth/next"
 import Link from "next/link"
 import { SignOutBtn } from "../signOut"
 import ReviewList from "../review-list"
-import Theme from "../theme"
+
 
 export default async function main(){
   let session = await getServerSession(authOptions)
@@ -37,7 +37,6 @@ export default async function main(){
           {session.user.name}'s <span>MOVIE</span> BOX
         </Link>
         <div>
-          <Theme />
           <SignOutBtn />
         </div>
       </div>
