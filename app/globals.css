@@ -14,15 +14,6 @@ html {
   --color-primary: #933547;
   --color-area: #1C212E;
 }
-[data-theme = 'red'] {
-  --color-primary: #933547;
-}
-[data-theme = 'blue'] {
-  --color-primary: #4561aa;
-}
-[data-theme = 'green']{
-  --color-primary: #50a3a4;
-}
 body { 
   background-color:var(--color-black);
   line-height: 1;
@@ -93,46 +84,6 @@ body {
 }
 .nav-sign-out:hover {
   text-decoration: underline;
-}
-.nav-bar .theme-dropdown {
-  display: inline-block;
-  position: relative;
-}
-.btn-theme {
-  position: absolute;
-  bottom: -5px;
-  left: -25px;
-  background: transparent;
-  border: none;
-  display: flex;
-  cursor: pointer;
-  color: #fff;
-}
-.theme-options {
-  display: none;
-  position: absolute;
-  top: 3px;
-  right: -40px;
-  display: flex;
-  flex-direction: row; 
-  padding: 4px;
-}
-.theme-options span {
-  margin-right: 8px;
-  display: inline-block;
-  cursor: pointer;
-  width: 20px;
-  height: 20px;
-  border-radius: 10px;
-}
-.theme-options .red {
-  background-color: #933547;
-}
-.theme-options .blue {
-  background-color: #4561aa;
-}
-.theme-options .green {
-  background-color: #50a3a4;
 }
 /* footer */
 .footer {
