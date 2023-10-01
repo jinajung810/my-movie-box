@@ -273,6 +273,7 @@ body {
 .search-list .empty-message {
   color: var(--color-primary);
   font-size: 14px;
+  text-align: center;
 }
 .search-list .the-loader {
   width: 30px;
@@ -290,7 +291,7 @@ body {
 .search-list .movies {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 20px;
 }
 .search-list .movies .movie {
