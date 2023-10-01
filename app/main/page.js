@@ -34,7 +34,14 @@ export default async function main(){
     <div className="container">
       <div className="nav-bar"> 
         <div className="logo">
-          {session.user.name}'s <span>MOVIE</span> BOX
+          {
+            session.user? (
+              `${session.user.name}'s <span>MOVIE</span> BOX`
+            ) : (
+              `Your <span>MOVIE</span> BOX`
+            )
+          }
+          
         </div>
         <div>
           <SignOutBtn />
