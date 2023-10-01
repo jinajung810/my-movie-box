@@ -2,9 +2,9 @@ import { connectDB } from "@/util/database";
 import { authOptions } from "@/pages/api/auth/[...nextauth].js";
 import { getServerSession } from "next-auth/next";
 import Link from "next/link";
-import { SignOutBtn } from "../signOut";
-import SignInBtn from "../signInBtn";
-import ReviewList from "../review-list";
+import { SignOutBtn } from "./signOut";
+import SignInBtn from "./signInBtn";
+import ReviewList from "./review-list";
 import {TbCubePlus } from 'react-icons/tb'
 
 export default async function Home() {
