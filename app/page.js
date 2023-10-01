@@ -22,10 +22,10 @@ export default async function Home() {
             <SignInBtn />
           </div>
         </div>
-        <div className="my-list">
-          <div className="add-review">
+        <div className="not-login-list">
+          <div className="not-login">
             <TbCubePlus size='40'/>
-            <h2 className="add-message">
+            <h2 className="not-login-message">
             It's an empty box.<br /> 
             <span>After signing in,</span> <br />
             search for a movie and add it.
@@ -68,7 +68,7 @@ export default async function Home() {
       <div className="nav-bar">
         <div className="logo">
           {session.user ? `${session.user.name}'s ` : 'Your '}
-          <span>MOVIE</span> BOX
+          <p>MOVIE</p> BOX
         </div>
         <div>
           <SignOutBtn />
