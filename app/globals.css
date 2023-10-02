@@ -143,6 +143,7 @@ body {
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .sign-up-text:hover {
   text-decoration: underline;
