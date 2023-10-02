@@ -138,6 +138,13 @@ body {
   margin-left: 5px;
 }
 /* sign up */
+.sign-up-text {
+  color: var(--color-white);
+  font-weight: 700;
+}
+.sign-up-text:hover {
+  text-decoration: underline;
+}
 .sign-up {
   position: absolute;
   top: 50%;
@@ -167,7 +174,6 @@ body {
 .sign-up .error-message {
   color: red;
 }
-
 /* login user main page */
 .my-list {
   padding: 20px;
