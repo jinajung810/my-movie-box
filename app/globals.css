@@ -125,6 +125,37 @@ body {
   font-size: 17px;
   color: var(--color-primary);
 }
+.nav-bar .theme-dropdown {
+  display: inline-block;
+  position: relative;
+}
+.btn-theme {
+  position: absolute;
+  bottom: -5px;
+  left: -25px;
+  background: transparent;
+  border: none;
+  display: flex;
+  cursor: pointer;
+  color: #fff;
+}
+.theme-options {
+  display: none;
+  position: absolute;
+  top: 3px;
+  right: -40px;
+  display: flex;
+  flex-direction: row; 
+  padding: 4px;
+}
+.theme-options span {
+  margin-right: 8px;
+  display: inline-block;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+}
 .theme-options .red {
   background-color: #933547;
 }

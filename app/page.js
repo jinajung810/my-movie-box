@@ -74,6 +74,7 @@ export default async function Home() {
           <p>MOVIE</p> BOX
         </div>
         <div>
+          <Theme />
           <SignOutBtn />
         </div>
       </div>
