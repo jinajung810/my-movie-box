@@ -16,6 +16,10 @@ export default function NewReviewModal ({ isOpen, onClose,  movieId })  {
   
   if (!isOpen) return null;
 
+  // placeholder에 오늘 날짜로 
+  const today = new Date();
+  const formattedDate = `${today.getFullYear() % 100}/${String(today.getMonth() + 1).padStart(2, '0')}/${String(today.getDate()).padStart(2, '0')}`;
+
   const handleRatingChange = (event, newValue) => {
     setStarValue(newValue);
   };
@@ -37,7 +41,7 @@ export default function NewReviewModal ({ isOpen, onClose,  movieId })  {
           <div className='review-text'>
             <div className='date'>
               <span>Date</span>
-              <input name="date" placeholder='YY/MM/DD'/>
+              <input name="date" placeholder={formattedDate}/>
             </div>
             <div className='where'>
               <span>Where</span>
