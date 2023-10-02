@@ -6,6 +6,7 @@ import { SignOutBtn } from "./signOut";
 import SignInBtn from "./signInBtn";
 import ReviewList from "./review-list";
 import {TbCubePlus } from 'react-icons/tb'
+import Theme from "./theme";
 
 export default async function Home() {
   let session = await getServerSession(authOptions);
@@ -19,6 +20,7 @@ export default async function Home() {
             Your <p>MOVIE</p> BOX
           </div>
           <div>
+            <Theme />
             <SignInBtn />
             <Link href='/signup' className="sign-up-text">Sign up</Link>
           </div>
@@ -72,6 +74,7 @@ export default async function Home() {
           <p>MOVIE</p> BOX
         </div>
         <div>
+          <Theme />
           <SignOutBtn />
         </div>
       </div>
