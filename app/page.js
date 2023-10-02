@@ -40,7 +40,7 @@ export default async function Home() {
             GitHub Repository
           </Link>
           &nbsp;・&nbsp;
-          <Link href='https://mail.google.com/mail/?view=cm&fs=1&to=${email}' target="_blank">Contact Me!</Link>
+          <Link href='https://mail.google.com/mail/?view=cm&fs=1&to=jjina810@gmail.com' target="_blank">Contact Me!</Link>
           <span>{new Date().getFullYear()}</span>
           <span>Jina Jung</span>
         </div>
