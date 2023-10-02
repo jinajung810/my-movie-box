@@ -20,6 +20,7 @@ export default async function Home() {
           </div>
           <div>
             <SignInBtn />
+            <Link href='/signup'>sign up</Link>
           </div>
         </div>
         <div className="not-login-list">

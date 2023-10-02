@@ -137,6 +137,36 @@ body {
 .footer span {
   margin-left: 5px;
 }
+/* sign up */
+.sign-up {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+}
+.sign-up input {
+  width: 100%;
+  height: 50px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: none;
+  font-size: 14px;
+  color: var(--color-white);
+  background-color: var(--color-area);
+  margin: 10px auto;
+}
+.sign-up input::placeholder {
+  color: var(--color-white-30);
+}
+.sign-up .btn {
+  width: 100%;
+  margin-top: 20px;
+}
+.sign-up .error-message {
+  color: red;
+}
 
 /* login user main page */
 .my-list {
