@@ -14,13 +14,14 @@ https://my-movie-box.vercel.app/
 ### 구현 기능 
 1. 메인 페이지 
 
-<img width="300" src="https://velog.velcdn.com/images/jinajung/post/8f58427f-e8e1-4491-a0dd-9dbc7581a2a3/image.png"/>
+<img width="500" src="https://velog.velcdn.com/images/jinajung/post/8f58427f-e8e1-4491-a0dd-9dbc7581a2a3/image.png"/>
 
 - 로그인 하지 않은 경우 (sign up, sign in)
     - `Next-auth` 사용자 인증 로그인 (Github, Google)
     -  회원가입, 아이디/비밀번호 방식 로그인 
 
-<img width="300" src="https://velog.velcdn.com/images/jinajung/post/115de64d-2b66-4b44-bc41-d1453f7d44a8/image.png"/><img width="300" src="https://velog.velcdn.com/images/jinajung/post/c6a94a3b-a279-42ec-b017-0df24e86ed6d/image.png"/>
+<img width="500" src="https://velog.velcdn.com/images/jinajung/post/115de64d-2b66-4b44-bc41-d1453f7d44a8/image.png"/>
+<img width="500" src="https://velog.velcdn.com/images/jinajung/post/c6a94a3b-a279-42ec-b017-0df24e86ed6d/image.png"/>
 
 -  로그인 한 경우
     - 회원 아이디가 포함된 logo로 로그인 상태 확인 가능 
@@ -32,7 +33,7 @@ https://my-movie-box.vercel.app/
 
 2. 영화 검색 페이지 
 
-<img width="300" src="https://velog.velcdn.com/images/jinajung/post/2b421caa-4138-4129-b3ea-2c5b01747fab/image.png"/>
+<img width="500" src="https://velog.velcdn.com/images/jinajung/post/2b421caa-4138-4129-b3ea-2c5b01747fab/image.png"/>
 
 - 화면 상단에 검색 바 노출, 영화 검색시 결과 목록 구현 
 - The Movie Database api로 한국영화 검색 
@@ -40,8 +41,8 @@ https://my-movie-box.vercel.app/
 
 3. 영화 디테일 페이지 
 
-<img width="300" src="https://velog.velcdn.com/images/jinajung/post/30b0b716-4394-4f87-8d92-38b7bbe8d95f/image.png"/>
-<img width="300" src="https://velog.velcdn.com/images/jinajung/post/6dd6ef86-dc1a-4dfa-8c11-88a5cc87f853/image.png"/>
+<img width="500" src="https://velog.velcdn.com/images/jinajung/post/30b0b716-4394-4f87-8d92-38b7bbe8d95f/image.png"/>
+<img width="500" src="https://velog.velcdn.com/images/jinajung/post/6dd6ef86-dc1a-4dfa-8c11-88a5cc87f853/image.png"/>
 
 - 로딩 애니메이션 
 - 영화의 포스터, 제목, 개봉일, 장르, 평점, 시놉시스 등 기본적인 영화 정보와 리뷰 등록 모달 
