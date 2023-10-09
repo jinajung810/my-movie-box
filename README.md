@@ -1,19 +1,28 @@
 # My Movie Box 🎬
 The Movie Database (TMDB)를 활용해 영화를 검색하고, 영화 리뷰를 등록할 수 있는 나만의 영화 박스 📦  
-
 ![](https://velog.velcdn.com/images/jinajung/post/115de64d-2b66-4b44-bc41-d1453f7d44a8/image.png)
 
 🎬 배포 URL <br/>
 https://my-movie-box.vercel.app/
-
 📌 테스트 계정 <br/>
 이메일: test@test.com <br/>
 비밀번호: test123 
 
-## 프로젝트 설명 
-### 구현 기능 
-1. 메인 페이지 
+# 프로젝트 설명 
+## 주요 기능 
+- Next auth를 사용해 사용자 인증 구글, 깃허브 로그인
+- 회원가입 기능 
+- The Movie Database (TMDB) api를 활용해 영화정보를 불러오고 검색하기
+- mongoDB로 영화 정보 저장/ 수정/ 삭제
 
+## 사용 스택
+- Next.js
+- MongoDB
+- CSS
+- Vercel
+  
+## 구현 기능 
+1. 메인 페이지 
 <img width="500" src="https://velog.velcdn.com/images/jinajung/post/8f58427f-e8e1-4491-a0dd-9dbc7581a2a3/image.png"/>
 
 - 로그인 하지 않은 경우 (sign up, sign in)
@@ -48,8 +57,4 @@ https://my-movie-box.vercel.app/
 - 영화의 포스터, 제목, 개봉일, 장르, 평점, 시놉시스 등 기본적인 영화 정보와 리뷰 등록 모달 
 - 리뷰 등록 후 메인 페이지로 이동 
 
-## 사용 스택
-- Next.js
-- MongoDB
-- CSS
-- Vercel
+
